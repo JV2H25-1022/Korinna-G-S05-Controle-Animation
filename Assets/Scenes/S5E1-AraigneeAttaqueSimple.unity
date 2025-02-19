@@ -2843,7 +2843,7 @@ GameObject:
   - component: {fileID: 7701125328972159568}
   - component: {fileID: 7701125328972159571}
   m_Layer: 0
-  m_Name: AraigneeV2
+  m_Name: Araignee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3824,7 +3824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef13ccafd6cae0d42869f193741bf742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vitessePromenade: 0.5
+  _vitessePromenade: 0
 --- !u!4 &7720876671790417874
 Transform:
   m_ObjectHideFlags: 0

@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class ControleAraigneeV1 : MonoBehaviour
 {
-    // varaibles de mouvement et contrôle
+    // varaibles de mouvement et contrï¿½le
     [SerializeField] private float vitessePromenade;
     private Rigidbody _rb;
     private Vector3 directionInput;
+    private Animator _animator;
 
     void Start()
     {
@@ -21,6 +22,16 @@ public class ControleAraigneeV1 : MonoBehaviour
         directionInput = new Vector3(directionAvecVitesse.x, 0f, directionAvecVitesse.y);
     }
 
+    void OnAttaque(){
+        Debug.Log("Moment d'attaquer");
+        _animator.SetBool("Attaque", true);
+        Invoke("TerminerAttaque", 0.2f);
+    }
+
+    void TerminerAttaque(){
+        _animator.SetBool("Attaque", false);
+
+    }
     void FixedUpdate()
     {
         // calculer et appliquer la translation
@@ -30,7 +41,7 @@ public class ControleAraigneeV1 : MonoBehaviour
         if (directionInput.magnitude > 0f)
         {
             // calculer rotation cible
-            float rotationCible = Vector3.SignedAngle(Vector3.forward, directionInput.normalized , Vector3.up);
+            float rotationCible = Vector3.SignedAngle(-Vector3.forward, -directionInput.normalized , Vector3.up);
             // appliquer la rotation cible directement
             _rb.MoveRotation(Quaternion.Euler(0.0f, rotationCible, 0.0f));
             _rb.AddRelativeForce(0, 0, mouvement.magnitude, ForceMode.VelocityChange);
